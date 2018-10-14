@@ -35,5 +35,14 @@ def decrypt_caesar(ciphertext):
     >>> decrypt_caesar("")
     ''
     """
-    # PUT YOUR CODE HERE
+    plaintext = ''
+    for i in ciphertext:
+        numb = ord(i) - 3
+        if ((ord(i) >= 97) and (ord(i) <= 122)):
+            newnumb = 97 + (numb - 97) % 26
+        elif ((ord(i) >= 65) and (ord(i) <= 90)):
+            newnumb = 65 + (numb - 65) % 26
+        else:
+            newnumb = ord(i)
+        plaintext += chr(newnumb)
     return plaintext

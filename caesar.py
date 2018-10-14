@@ -11,8 +11,9 @@ def encrypt_caesar(plaintext):
     ''
     """
     ciphertext = ''
+    shift = 3
     for i in plaintext:
-        numb = ord(i) + 3
+        numb = ord(i) + shift
         if ((ord(i) >= 97) and (ord(i) <= 122)):
             newnumb = 97 + (numb - 97) % 26
         elif ((ord(i) >= 65) and (ord(i) <= 90)):
@@ -36,8 +37,9 @@ def decrypt_caesar(ciphertext):
     ''
     """
     plaintext = ''
+    shift = 3
     for i in ciphertext:
-        numb = ord(i) - 3
+        numb = ord(i) - shift
         if ((ord(i) >= 97) and (ord(i) <= 122)):
             newnumb = 97 + (numb - 97) % 26
         elif ((ord(i) >= 65) and (ord(i) <= 90)):

@@ -10,7 +10,16 @@ def encrypt_caesar(plaintext):
     >>> encrypt_caesar("")
     ''
     """
-    # PUT YOUR CODE HERE
+    ciphertext = ''
+    for i in plaintext:
+        numb = ord(i) + 3
+        if ((ord(i) >= 97) and (ord(i) <= 122)):
+            newnumb = 97 + (numb - 97) % 26
+        elif ((ord(i) >= 65) and (ord(i) <= 90)):
+            newnumb = 65 + (numb - 65) % 26
+        else:
+            newnumb = ord(i)
+        ciphertext += chr(newnumb)
     return ciphertext
 
 

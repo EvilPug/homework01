@@ -1,17 +1,16 @@
-def encrypt_caesar(plaintext):
+def encrypt_caesar(plaintext, shift):
     """
     Encrypts plaintext using a Caesar cipher.
-    >>> encrypt_caesar("PYTHON")
+    >>> encrypt_caesar("PYTHON", 3)
     'SBWKRQ'
-    >>> encrypt_caesar("python")
+    >>> encrypt_caesar("python", 3)
     'sbwkrq'
-    >>> encrypt_caesar("Python3.6")
+    >>> encrypt_caesar("Python3.6", 3)
     'Sbwkrq3.6'
-    >>> encrypt_caesar("")
+    >>> encrypt_caesar("", 3)
     ''
     """
     ciphertext = ''
-    shift = 3
     for i in plaintext:
         numb = ord(i) + shift
         if ((ord(i) >= 97) and (ord(i) <= 122)):
@@ -24,20 +23,19 @@ def encrypt_caesar(plaintext):
     return ciphertext
 
 
-def decrypt_caesar(ciphertext):
+def decrypt_caesar(ciphertext, shift):
     """
     Decrypts a ciphertext using a Caesar cipher.
-    >>> decrypt_caesar("SBWKRQ")
+    >>> decrypt_caesar("SBWKRQ", 3)
     'PYTHON'
-    >>> decrypt_caesar("sbwkrq")
+    >>> decrypt_caesar("sbwkrq", 3)
     'python'
-    >>> decrypt_caesar("Sbwkrq3.6")
+    >>> decrypt_caesar("Sbwkrq3.6", 3)
     'Python3.6'
-    >>> decrypt_caesar("")
+    >>> decrypt_caesar("", 3)
     ''
     """
     plaintext = ''
-    shift = 3
     for i in ciphertext:
         numb = ord(i) - shift
         if ((ord(i) >= 97) and (ord(i) <= 122)):

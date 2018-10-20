@@ -34,6 +34,16 @@ def gcd(a, b):
     return a
     pass
 
+def euclid(a, b):
+    '''
+    Extended Euclidian algorithm
+    '''
+    if a == 0:
+        return (b, 0, 1)
+    else:
+        d, y, x = euclid(b % a, a)
+        return (d, x - (b // a) * y, y)
+
 
 def multiplicative_inverse(e, phi):
     """
@@ -43,7 +53,8 @@ def multiplicative_inverse(e, phi):
     >>> multiplicative_inverse(7, 40)
     23
     """
-    # PUT YOUR CODE HERE
+    d, x, y = euclid(e, phi)
+    return x % phi
     pass
 
 
@@ -57,7 +68,7 @@ def generate_keypair(p, q):
     n = p * q
 
     # phi = (p-1)(q-1)
-    n = (p - 1) * (q - 1)
+    phi = (p - 1) * (q - 1)
 
     # Choose an integer e such that e and phi(n) are coprime
     e = random.randrange(1, phi)

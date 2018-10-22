@@ -17,7 +17,6 @@ def is_prime(n):
     elif n < 2 or n % 2 == 0:
         return False
     return True
-    pass
 
 
 def gcd(a, b):
@@ -32,7 +31,6 @@ def gcd(a, b):
     while b:
         a, b = b, a % b
     return a
-    pass
 
 def euclid(a, b):
     '''
@@ -55,7 +53,6 @@ def multiplicative_inverse(e, phi):
     """
     d, x, y = euclid(e, phi)
     return x % phi
-    pass
 
 
 def generate_keypair(p, q):

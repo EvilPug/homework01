@@ -32,6 +32,7 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
+
 def euclid(a, b):
     '''
     Extended Euclidian algorithm

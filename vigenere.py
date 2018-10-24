@@ -22,11 +22,11 @@ def encrypt_vigenere(plaintext, keyword):
         n = 0
         keylist = list(keyword)
         for i in keyword:
-            if plaintext[n].islower() == False:
-                if keylist[n].islower() == True:
+            if plaintext[n].islower() is False:
+                if keylist[n].islower() is True:
                     keylist[n] = keylist[n].upper()
-            elif plaintext[n].islower() == True:
-                if keylist[n].islower() == False:
+            elif plaintext[n].islower() is True:
+                if keylist[n].islower() is False:
                     keylist[n] = keylist[n].lower()
             n += 1
         keyword = ''.join(keylist)
@@ -78,15 +78,14 @@ def decrypt_vigenere(ciphertext, keyword):
         n = 0
         keylist = list(keyword)
         for i in keyword:
-            if ciphertext[n].islower() == False:
-                if keylist[n].islower() == True:
+            if ciphertext[n].islower() is False:
+                if keylist[n].islower() is True:
                     keylist[n] = keylist[n].upper()
-            elif ciphertext[n].islower() == True:
-                if keylist[n].islower() == False:
+            elif ciphertext[n].islower() is True:
+                if keylist[n].islower() is False:
                     keylist[n] = keylist[n].lower()
             n += 1
         keyword = ''.join(keylist)
-
 
         n = 0
         for abc in ciphertext:

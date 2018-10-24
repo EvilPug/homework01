@@ -18,25 +18,38 @@ def encrypt_vigenere(plaintext, keyword):
         if len(plaintext) != len(keyword):
             for i in range(len(plaintext) - len(keyword)):
                 keyword += keyword[n]
-                n = n + 1
+                n += 1
+        n = 0
+        keylist = list(keyword)
+        for i in keyword:
+            if plaintext[n].islower() == False:
+                if keylist[n].islower() == True:
+                    keylist[n] = keylist[n].upper()
+            elif plaintext[n].islower() == True:
+                if keylist[n].islower() == False:
+                    keylist[n] = keylist[n].lower()
+            n += 1
+        keyword = ''.join(keylist)
 
-        ch = plaintext[0]
-        if 'a' <= ch <= 'z':
-            n = 0
-            for abc in plaintext:
-                lowshift = alphabet_low.index(keyword[n])
+        n = 0
+        for abc in plaintext:
+            if 'a' <= abc <= 'z':
+                if 'a' <= keyword[n] <= 'z':
+                    lowshift = alphabet_low.index(keyword[n])
+                else:
+                    highshift = alphabet_high.index(keyword[n])
                 newnumb = 97 + (ord(abc) + lowshift - 97) % 26
                 ciphertext += chr(newnumb)
-                n = n + 1
-        elif 'A' <= ch <= 'Z':
-            n = 0
-            for abc in plaintext:
-                highshift = alphabet_high.index(keyword[n])
+                n += 1
+            elif 'A' <= abc <= 'Z' and 'A' <= keyword[n] <= 'Z':
+                if 'a' <= keyword[n] <= 'z':
+                    lowshift = alphabet_low.index(keyword[n])
+                else:
+                    highshift = alphabet_high.index(keyword[n])
                 newnumb = 65 + (ord(abc) + highshift - 65) % 26
                 ciphertext += chr(newnumb)
-                n = n + 1
-        else:
-            for abc in plaintext:
+                n += 1
+            else:
                 newnumb = ord(abc)
     return ciphertext
 
@@ -61,25 +74,38 @@ def decrypt_vigenere(ciphertext, keyword):
         if len(ciphertext) != len(keyword):
             for i in range(len(ciphertext) - len(keyword)):
                 keyword += keyword[n]
-                n = n + 1
+                n += 1
+        n = 0
+        keylist = list(keyword)
+        for i in keyword:
+            if ciphertext[n].islower() == False:
+                if keylist[n].islower() == True:
+                    keylist[n] = keylist[n].upper()
+            elif ciphertext[n].islower() == True:
+                if keylist[n].islower() == False:
+                    keylist[n] = keylist[n].lower()
+            n += 1
+        keyword = ''.join(keylist)
 
-        ch = ciphertext[0]
-        if 'a' <= ch <= 'z':
-            n = 0
-            for abc in ciphertext:
-                lowshift = alphabet_low.index(keyword[n])
+
+        n = 0
+        for abc in ciphertext:
+            if 'a' <= abc <= 'z':
+                if 'a' <= keyword[n] <= 'z':
+                    lowshift = alphabet_low.index(keyword[n])
+                else:
+                    highshift = alphabet_high.index(keyword[n])
                 newnumb = 97 + (ord(abc) - lowshift - 97) % 26
                 plaintext += chr(newnumb)
-                n = n + 1
-        elif 'A' <= ch <= 'Z':
-            n = 0
-            for abc in ciphertext:
-                highshift = alphabet_high.index(keyword[n])
+                n += 1
+            elif 'A' <= abc <= 'Z' and 'A' <= keyword[n] <= 'Z':
+                if 'a' <= keyword[n] <= 'z':
+                    lowshift = alphabet_low.index(keyword[n])
+                else:
+                    highshift = alphabet_high.index(keyword[n])
                 newnumb = 65 + (ord(abc) - highshift - 65) % 26
                 plaintext += chr(newnumb)
-                n = n + 1
-        else:
-            for abc in plaintext:
+                n += 1
+            else:
                 newnumb = ord(abc)
-
     return plaintext
